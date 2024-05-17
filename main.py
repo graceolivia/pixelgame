@@ -1,26 +1,20 @@
 import pygame
 import sys
 
-# initialize pygame
 pygame.init()
 
-# screen settings
 size = width, height = 800, 600
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Character Movement")
 
-# colors
 blue = (204,204,255)
 
-# character settings
 char_speed = 5
 
-# load character image
 char_image = pygame.image.load("girl.gif")
 char_rect = char_image.get_rect()
 char_rect.topleft = (width // 2, height // 2)
 
-# game loop
 running = True
 while running:
     for event in pygame.event.get():
@@ -38,14 +32,20 @@ while running:
     if keys[pygame.K_DOWN]:
         char_rect.y += char_speed
 
-    # fill screen with blue
+
+    if char_rect.left < 0:
+        char_rect.left = 0
+    if char_rect.right > width:
+        char_rect.right = width
+    if char_rect.top < 0:
+        char_rect.top = 0
+    if char_rect.bottom > height:
+        char_rect.bottom = height
+
     screen.fill(blue)
 
-    # draw character
     screen.blit(char_image, char_rect.topleft)
 
-    # update display
     pygame.display.flip()
 
-    # cap the frame rate
     pygame.time.Clock().tick(60)
