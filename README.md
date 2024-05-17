@@ -15,3 +15,7 @@ source venv/bin/activate  # on windows, use `venv\Scripts\activate`
 
 or to run in watchdog mode, which restarts after every code save:
 `python3 watcher.py`
+
+
+## Assets credit
+Some assets are by [DeepDiveGameStudio](https://deepdivegamestudio.itch.io/). Others are by me.
